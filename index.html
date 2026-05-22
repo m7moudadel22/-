@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصياد | دليل صحتك الشامل</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <span class="badge">🏥 الصياد</span>
+                <h1>الصياد - دليلك الصحي</h1>
+                <p>منصة متطورة لاستكشاف الأمراض والعلاجات والوصفات، مع إمكانية إضافة محتوى جديد بسهولة.</p>
+            </div>
+            <nav class="nav-links">
+                <a href="#home">الرئيسية</a>
+                <a href="#diseases">الأمراض</a>
+                <a href="#nutrition">التغذية</a>
+                <a href="#muscle">زيادة العضلات</a>
+                <a href="#hair">صحة الشعر</a>
+                <a href="#tips">نصائح</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h2>استكشف الصحة بذكاء</h2>
+                <p>منصة ذكية توفر معلومات طبية دقيقة ووصفات صحية مخصصة، مع إمكانية مشاركة المعرفة وإضافة حالات جديدة.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="scrollToSection('diseases')">استعرض الأمراض</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('addNew')">إضافة جديد</button>
+                </div>
+            </div>
+            <div class="hero-card">
+                <h3>🔍 بحث شامل</h3>
+                <input id="searchInput" type="search" placeholder="ابحث عن مرض أو وصفة أو دواء..." oninput="filterDiseases()">
+                <div class="share-buttons" style="margin-top: 1rem; display: flex; gap: 0.8rem;">
+                    <button class="share-btn" onclick="copyPageLink()" title="نسخ الرابط">📋 نسخ الرابط</button>
+                    <button class="share-btn" onclick="shareOnWhatsApp()" title="شارك على واتساب">💬 واتساب</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="diseases" class="section">
+            <div class="section-header">
+                <h2>الأمراض والحالات الصحية</h2>
+                <p>اختر حالة لعرض الأعراض، العلاج الطبي، الأدوية، والوصفات الغذائية الداعمة.</p>
+            </div>
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="setCategoryFilter('all', this)">كل الفئات</button>
+                <button class="filter-btn" onclick="setCategoryFilter('فيروسية', this)">فيروسية</button>
+                <button class="filter-btn" onclick="setCategoryFilter('بكتيرية', this)">بكتيرية</button>
+                <button class="filter-btn" onclick="setCategoryFilter('مزمنة', this)">مزمنة</button>
+                <button class="filter-btn" onclick="setCategoryFilter('هضمي', this)">هضمي</button>
+                <button class="filter-btn" onclick="setCategoryFilter('جلدية', this)">جلدية</button>
+                <button class="filter-btn" onclick="setCategoryFilter('نفسية', this)">نفسية</button>
+                <button class="filter-btn" onclick="setCategoryFilter('تغذية', this)">تغذية</button>
+            </div>
+            <div id="diseaseList" class="disease-grid"></div>
+        </section>
+
+        <section id="detail" class="section detail-section hidden">
+            <div class="section-header">
+                <h2 id="detailTitle">تفاصيل الحالة</h2>
+                <p id="detailDescription">تعرف على الصورة الطبية الكاملة للطريقة المثلى للعلاج والرعاية.</p>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <h3>الأعراض الرئيسية</h3>
+                    <ul id="detailSymptoms"></ul>
+                </div>
+                <div class="detail-card">
+                    <h3>العلاج الطبي</h3>
+                    <p id="detailTreatment"></p>
+                </div>
+                <div class="detail-card">
+                    <h3>الأدوية الموصى بها</h3>
+                    <ul id="detailMedications"></ul>
+                </div>
+                <div class="detail-card">
+                    <h3>طرق العلاج الطبيعي</h3>
+                    <p id="detailRemedies"></p>
+                </div>
+                <div class="detail-card wide-card">
+                    <h3>وصفات غذائية داعمة</h3>
+                    <ul id="detailFoodRecipes"></ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="addNew" class="section add-section">
+            <div class="section-header">
+                <h2>إضافة مرض أو وصفة جديدة</h2>
+                <p>ساهم في بناء قاعدة بيانات صحية موسعة بإضافة حالات ووصفات جديدة.</p>
+            </div>
+            <div class="add-form-container">
+                <div class="add-form">
+                    <div class="form-row">
+                        <input type="text" id="newName" placeholder="اسم المرض أو الوصفة" required>
+                        <select id="newCategory" required>
+                            <option value="">اختر الفئة</option>
+                            <option value="فيروسية">فيروسية</option>
+                            <option value="بكتيرية">بكتيرية</option>
+                            <option value="مزمنة">مزمنة</option>
+                            <option value="هضمي">هضمي</option>
+                            <option value="جلدية">جلدية</option>
+                            <option value="نفسية">نفسية</option>
+                            <option value="قلبية">قلبية</option>
+                            <option value="تغذية">تغذية</option>
+                            <option value="شعر">شعر</option>
+                        </select>
+                    </div>
+                    <textarea id="newDescription" placeholder="وصف مفصل للحالة أو الوصفة..." rows="3" required></textarea>
+                    <input type="text" id="newSymptoms" placeholder="الأعراض (افصل بفاصلة: أعراض، أخرى، ثالثة)" required>
+                    <textarea id="newTreatment" placeholder="طرق العلاج الطبي..." rows="2" required></textarea>
+                    <input type="text" id="newMedications" placeholder="الأدوية (افصل بفاصلة)" required>
+                    <textarea id="newRemedies" placeholder="العلاجات الطبيعية والنصائح..." rows="2" required></textarea>
+                    <input type="text" id="newRecipes" placeholder="الوصفات الغذائية (افصل بفاصلة)" required>
+                    <button class="btn btn-primary" onclick="addNewItem()" style="width: 100%; margin-top: 1rem;">✨ إضافة</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="nutrition" class="section feature-section">
+            <div class="section-header">
+                <h2>التغذية الصحية والداعمة</h2>
+                <p>برامج غذائية مدروسة للمساعدة على الشفاء، تعزيز المناعة، ودعم وظائف الجسم.</p>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <h3>وجبات مضادة للالتهاب</h3>
+                    <p>تناول أطعمة غنية بأوميغا 3، خضار ورقية، وزيوت صحية لدعم جهاز المناعة وتقليل الالتهابات.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>دعم الهضم</h3>
+                    <p>وجبات خفيفة من الألياف، البروبيوتيك، والماء الدافئ تساعد في تهدئة المعدة وتحسين حركة الأمعاء.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>تنظيم السكر والضغط</h3>
+                    <p>اختر حمية منخفضة السكر، غنية بالخضروات، ومعتدلة الصوديوم لدعم صحة القلب والبنكرياس.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="muscle" class="section feature-section">
+            <div class="section-header">
+                <h2>زيادة الكتلة العضلية</h2>
+                <p>وصفات وبرامج غذائية لبناء العضلات بطريقة صحية دون زيادة الدهون.</p>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <h3>بروتين طبيعي</h3>
+                    <p>وجبة تحتوي على صدر دجاج مشوي، عدس، وكينوا، مع صلصة زيت الزيتون والليمون.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>تعافي العضلات</h3>
+                    <p>سموثي لبن زبادي مع موز، سبانخ، ومسحوق بروتين نباتي لتجديد الطاقة بعد التمرين.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>وجبة قبل النوم</h3>
+                    <p>كottage cheese مع مكسرات غير مملحة وبذور الشيا لدعم البناء العضلي أثناء النوم.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="hair" class="section feature-section">
+            <div class="section-header">
+                <h2>صحة الشعر وقوة البصيلات</h2>
+                <p>نظام غذائي وعلاجات طبيعية لتقليل التساقط وتحسين قوة ولمعان الشعر.</p>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <h3>بودرة البروتين</h3>
+                    <p>عصير مصنوع من سبانخ، أفوكادو، وموز يدعم نمو الشعر ويعزز صحة فروة الرأس.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>حمية غنية بالحديد</h3>
+                    <p>وجبات تحتوي على سبانخ، لحم دجاج، وبقوليات تعزز وصول الأكسجين لبصيلات الشعر.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>زيوت طبيعية</h3>
+                    <p>دلك فروة الرأس بزيت جوز الهند أو زيت الأرغان لتحسين الدورة الدموية وتقوية الشعر.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="tips" class="section tips-section">
+            <div class="section-header">
+                <h2>نصائح طبية يومية</h2>
+                <p>ممارسات بسيطة تعزز صحتك وتدعم الشفاء طويل الأمد.</p>
+            </div>
+            <div class="tips-grid">
+                <article class="tip-card">
+                    <h3>الماء أولاً</h3>
+                    <p>اشرب ما لا يقل عن 8 أكواب ماء يومياً لدعم كل وظائف الجسم الحيوية.</p>
+                </article>
+                <article class="tip-card">
+                    <h3>تنفس بعمق</h3>
+                    <p>تمارين التنفس تساعد في تخفيض التوتر وتحسين تدفق الأكسجين.</p>
+                </article>
+                <article class="tip-card">
+                    <h3>نم جيداً</h3>
+                    <p>النوم الكافي يدعم الجهاز المناعي ويساعد على تعافي الخلايا.</p>
+                </article>
+                <article class="tip-card">
+                    <h3>راجع طبيبك</h3>
+                    <p>استشر طبيباً قبل بدء أي علاج دوائي أو نظام غذائي جديد.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="site-footer">
+        <div class="container footer-inner">
+            <div>
+                <h3>🌟 الصياد - الصحة بين يديك</h3>
+                <p>منصة ذكية توفر معلومات صحية دقيقة وتفاعلية للجميع.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#home">الرئيسية</a>
+                <a href="#diseases">الأمراض</a>
+                <a href="#addNew">إضافة جديد</a>
+                <a href="javascript:void(0)" onclick="shareOnWhatsApp()">مشاركة</a>
+            </div>
+            <div style="text-align: center; margin-top: 1rem; color: var(--muted); font-size: 0.9rem;">
+                © 2026 الصياد | جميع الحقوق محفوظة
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

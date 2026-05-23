@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="https://m7moudadel22.github.io/-/">
     <title>لوحة التحكم - الصياد</title>
     <style>
         * {
@@ -381,10 +382,55 @@
 
             .disease-actions {
                 width: 100%;
+                justify-content: flex-start;
             }
 
             .btn-small {
                 flex: 1;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .admin-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+
+            .logout-btn {
+                width: 100%;
+            }
+
+            .tabs {
+                justify-content: center;
+            }
+
+            .tab-btn {
+                flex: 1;
+                min-width: 110px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-container {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .login-box {
+                padding: 24px;
+            }
+
+            .form-section {
+                padding: 18px;
+            }
+
+            .tab-btn {
+                font-size: 13px;
             }
         }
     </style>

@@ -1,3 +1,5 @@
+const SITE_URL = 'https://m7moudadel22.github.io/-';
+
 const defaultDiseases = [
     {
         id: 'cold',
@@ -218,7 +220,6 @@ const defaultDiseases = [
         medications: ['مينوكسيديل', 'فيتامينات للشعر', 'مكملات البيوتين'],
         remedies: 'التغذية السليمة، تجنب التوتر، وتدليك فروة الرأس بزيوت طبيعية.',
         foodRecipes: ['سموثي السبانخ مع الموز وزبدة اللوز', 'سلطة السلمون مع بذور الكينوا', 'عصير الجزر مع الزنجبيل']
-    },
     }
 ];
 
@@ -367,7 +368,7 @@ function loadCustomDiseases() {
 }
 
 function copyPageLink() {
-    const link = window.location.href;
+    const link = SITE_URL;
     navigator.clipboard.writeText(link).then(() => {
         alert('✅ تم نسخ الرابط بنجاح!');
     }).catch(() => {
@@ -377,7 +378,7 @@ function copyPageLink() {
 
 function shareOnWhatsApp() {
     const message = encodeURIComponent('🏥 الصياد - دليلك الصحي الشامل! اكتشف آلاف الأمراض والعلاجات والوصفات الغذائية المتخصصة. أضف معلوماتك الخاصة وشارك الصحة مع الجميع! 💪');
-    const link = window.location.href;
+    const link = SITE_URL;
     window.open(`https://wa.me/?text=${message}%20${encodeURIComponent(link)}`, '_blank');
 }
 

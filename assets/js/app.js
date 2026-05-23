@@ -1,4 +1,4 @@
-const diseases = [
+const defaultDiseases = [
     {
         id: 'cold',
         name: 'نزلة برد',
@@ -219,18 +219,10 @@ const diseases = [
         remedies: 'التغذية السليمة، تجنب التوتر، وتدليك فروة الرأس بزيوت طبيعية.',
         foodRecipes: ['سموثي السبانخ مع الموز وزبدة اللوز', 'سلطة السلمون مع بذور الكينوا', 'عصير الجزر مع الزنجبيل']
     },
-    {
-        id: 'muscleGain',
-        name: 'زيادة الكتلة العضلية',
-        category: 'تغذية',
-        description: 'دعم بناء العضلات بالوجبات الغنية بالبروتين والكربوهيدرات الصحية وتوقيت التغذية المناسب.',
-        symptoms: ['زيادة القوة', 'تحسن الأداء الرياضي', 'ارتفاع الشهية', 'تحسن التعافي', 'زيادة الكتلة العضلية'],
-        treatment: 'تناول بروتين كافٍ، تدريب مقاومة منظم، وكربوهيدرات معقدة لتغذية العضلات.',
-        medications: ['مكملات بروتين', 'مكملات أحماض أمينية متفرعة'],
-        remedies: 'التركيز على الراحة والتعافي بعد التمرين، وتناول وجبات غنية بالبروتين.',
-        foodRecipes: ['شوربة دجاج بالبروتين مع الكينوا', 'سموثي اللبن اليوناني مع الموز وزبدة الفول السوداني', 'بيض مسلوق مع أفوكادو وخبز القمح الكامل']
     }
 ];
+
+let diseases = [...defaultDiseases];
 
 const diseaseList = document.getElementById('diseaseList');
 const detailSection = document.getElementById('detail');
@@ -334,8 +326,11 @@ function addNewItem() {
         foodRecipes: foodRecipes.filter(r => r)
     };
 
+    const customDiseases = JSON.parse(localStorage.getItem('customDiseases') || '[]');
+    customDiseases.unshift(newItem);
+    saveDiseasesToStorage(customDiseases);
+
     diseases.unshift(newItem);
-    saveDiseasesToStorage();
     
     document.getElementById('newName').value = '';
     document.getElementById('newCategory').value = '';
@@ -351,9 +346,9 @@ function addNewItem() {
     alert('✅ تمت إضافة العنصر الجديد بنجاح!');
 }
 
-function saveDiseasesToStorage() {
+function saveDiseasesToStorage(customDiseases) {
     try {
-        localStorage.setItem('customDiseases', JSON.stringify(diseases));
+        localStorage.setItem('customDiseases', JSON.stringify(customDiseases));
     } catch (e) {
         console.log('تنبيه: تعذر حفظ البيانات بشكل دائم');
     }
@@ -364,7 +359,7 @@ function loadCustomDiseases() {
         const custom = localStorage.getItem('customDiseases');
         if (custom) {
             const customItems = JSON.parse(custom);
-            diseases = [...customItems, ...diseases];
+            diseases = [...customItems, ...defaultDiseases];
         }
     } catch (e) {
         console.log('تنبيه: تعذر تحميل البيانات المحفوظة');

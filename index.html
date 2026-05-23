@@ -32,7 +32,6 @@
                 <p>منصة ذكية توفر معلومات طبية دقيقة ووصفات صحية مخصصة، مع إمكانية مشاركة المعرفة وإضافة حالات جديدة.</p>
                 <div class="hero-actions">
                     <button class="btn btn-primary" onclick="scrollToSection('diseases')">استعرض الأمراض</button>
-                    <button class="btn btn-secondary" onclick="scrollToSection('addNew')">إضافة جديد</button>
                 </div>
             </div>
             <div class="hero-card">
@@ -90,39 +89,6 @@
                 <div class="detail-card wide-card">
                     <h3>وصفات غذائية داعمة</h3>
                     <ul id="detailFoodRecipes"></ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="addNew" class="section add-section">
-            <div class="section-header">
-                <h2>إضافة مرض أو وصفة جديدة</h2>
-                <p>ساهم في بناء قاعدة بيانات صحية موسعة بإضافة حالات ووصفات جديدة.</p>
-            </div>
-            <div class="add-form-container">
-                <div class="add-form">
-                    <div class="form-row">
-                        <input type="text" id="newName" placeholder="اسم المرض أو الوصفة" required>
-                        <select id="newCategory" required>
-                            <option value="">اختر الفئة</option>
-                            <option value="فيروسية">فيروسية</option>
-                            <option value="بكتيرية">بكتيرية</option>
-                            <option value="مزمنة">مزمنة</option>
-                            <option value="هضمي">هضمي</option>
-                            <option value="جلدية">جلدية</option>
-                            <option value="نفسية">نفسية</option>
-                            <option value="قلبية">قلبية</option>
-                            <option value="تغذية">تغذية</option>
-                            <option value="شعر">شعر</option>
-                        </select>
-                    </div>
-                    <textarea id="newDescription" placeholder="وصف مفصل للحالة أو الوصفة..." rows="3" required></textarea>
-                    <input type="text" id="newSymptoms" placeholder="الأعراض (افصل بفاصلة: أعراض، أخرى، ثالثة)" required>
-                    <textarea id="newTreatment" placeholder="طرق العلاج الطبي..." rows="2" required></textarea>
-                    <input type="text" id="newMedications" placeholder="الأدوية (افصل بفاصلة)" required>
-                    <textarea id="newRemedies" placeholder="العلاجات الطبيعية والنصائح..." rows="2" required></textarea>
-                    <input type="text" id="newRecipes" placeholder="الوصفات الغذائية (افصل بفاصلة)" required>
-                    <button class="btn btn-primary" onclick="addNewItem()" style="width: 100%; margin-top: 1rem;">✨ إضافة</button>
                 </div>
             </div>
         </section>
@@ -225,7 +191,6 @@
             <div class="footer-links">
                 <a href="#home">الرئيسية</a>
                 <a href="#diseases">الأمراض</a>
-                <a href="#addNew">إضافة جديد</a>
                 <a href="javascript:void(0)" onclick="shareOnWhatsApp()">مشاركة</a>
             </div>
             <div style="text-align: center; margin-top: 1rem; color: var(--muted); font-size: 0.9rem;">

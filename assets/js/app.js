@@ -431,7 +431,7 @@ function registerVisitor() {
 
         const storedName = nameInput.value.trim();
         if (!storedName) {
-            alert('⚠️ الرجاء كتابة اسمك قبل التسجيل.');
+            alert('⚠️ الاسم مطلوب لتسجيل الزيارة.');
             return;
         }
 
@@ -466,6 +466,30 @@ function registerVisitor() {
     } catch (e) {
         console.log('تعذر تحديث تفاصيل الزائر:', e);
     }
+}
+
+function setupVisitorForm() {
+    const nameInput = document.getElementById('visitorName');
+    const button = document.getElementById('visitorRegisterBtn');
+    if (!nameInput || !button) return;
+
+    const visitorId = localStorage.getItem('visitorDeviceId');
+    const records = JSON.parse(localStorage.getItem('visitorRecords') || '[]');
+    const existing = records.find(record => record.id === visitorId && record.name && record.name.trim() && record.name !== 'زائر مجهول');
+
+    nameInput.value = existing ? existing.name : '';
+    button.disabled = !nameInput.value.trim();
+    button.style.opacity = nameInput.value.trim() ? '1' : '0.7';
+
+    if (existing) {
+        button.textContent = 'تمّ التسجيل';
+    }
+
+    nameInput.addEventListener('input', () => {
+        const value = nameInput.value.trim();
+        button.disabled = !value;
+        button.style.opacity = value ? '1' : '0.7';
+    });
 }
 
 function incrementVisitorCount() {
@@ -517,7 +541,10 @@ function scrollToTop() {
 }
 
 window.addEventListener('scroll', showScrollButton);
-window.addEventListener('load', showScrollButton);
+window.addEventListener('load', () => {
+    showScrollButton();
+    setupVisitorForm();
+});
 
 loadCustomDiseases();
 recordVisitorSession();

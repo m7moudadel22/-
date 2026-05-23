@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="https://m7moudadel22.github.io/-/">
     <title>الصياد | دليل صحتك الشامل</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -38,13 +37,16 @@
             <div class="hero-card">
                 <h3>🔍 بحث شامل</h3>
                 <input id="searchInput" type="search" placeholder="ابحث عن مرض أو وصفة أو دواء..." oninput="filterDiseases()">
-                <div class="share-buttons" style="margin-top: 1rem; display: flex; gap: 0.8rem;">
-                    <button class="share-btn" onclick="copyPageLink()" title="نسخ الرابط">📋 نسخ الرابط</button>
-                    <button class="share-btn" onclick="shareOnWhatsApp()" title="شارك على واتساب">💬 واتساب</button>
+                    <div class="visitor-box">
+                        <input id="visitorName" type="text" placeholder="اكتب اسمك لتسجيل زيارتك (اختياري)">
+                        <button id="visitorRegisterBtn" class="btn btn-primary" onclick="registerVisitor()">سجّل زيارتي</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()" aria-label="العودة للأعلى">⬆️</button>
 
     <main class="container">
         <section id="diseases" class="section">

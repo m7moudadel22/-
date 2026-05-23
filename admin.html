@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="https://m7moudadel22.github.io/-/">
+
     <title>لوحة التحكم - الصياد</title>
     <style>
         * {
@@ -249,6 +249,43 @@
             gap: 10px;
         }
 
+        .visitor-details {
+            margin-top: 20px;
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .visitor-details h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .visitor-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        .visitor-table th,
+        .visitor-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: right;
+            font-size: 14px;
+            color: #e0e0e0;
+        }
+
+        .visitor-table th {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .visitor-table tbody tr:hover {
+            background: rgba(255, 215, 0, 0.06);
+        }
+
         .disease-info {
             flex: 1;
             min-width: 200px;
@@ -404,11 +441,13 @@
 
             .tabs {
                 justify-content: center;
+                flex-direction: column;
+                gap: 0.75rem;
             }
 
             .tab-btn {
-                flex: 1;
-                min-width: 110px;
+                width: 100%;
+                min-width: auto;
             }
 
             .form-row {
@@ -417,6 +456,15 @@
 
             .admin-container {
                 padding: 16px;
+            }
+
+            .disease-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-small {
+                width: 100%;
             }
         }
 
@@ -431,6 +479,27 @@
 
             .tab-btn {
                 font-size: 13px;
+            }
+
+            .admin-container {
+                padding: 12px;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                font-size: 15px;
+            }
+
+            .disease-item {
+                padding: 12px;
+            }
+
+            .logout-btn,
+            .btn,
+            .btn-add,
+            .btn-small {
+                width: 100%;
             }
         }
     </style>
@@ -560,6 +629,14 @@
                         <div style="font-size: 32px; color: var(--accent); font-weight: bold;" id="statsDefault">0</div>
                         <div style="color: #aaa; margin-top: 10px;">أمراض أصلية</div>
                     </div>
+                    <div style="background: rgba(255, 215, 0, 0.1); padding: 20px; border-radius: 12px; text-align: center;">
+                        <div style="font-size: 32px; color: var(--accent); font-weight: bold;" id="statsVisitors">0</div>
+                        <div style="color: #aaa; margin-top: 10px;">زوار الموقع</div>
+                    </div>
+                </div>
+                <div class="visitor-details">
+                    <h3>سجل الزوار</h3>
+                    <div id="visitorRecords">لا توجد زيارات مسجلة بعد.</div>
                 </div>
             </div>
         </div>
@@ -727,14 +804,56 @@
             }
         }
 
+        function getVisitorRecords() {
+            return JSON.parse(localStorage.getItem('visitorRecords') || '[]');
+        }
+
+        function renderVisitorRecords() {
+            const records = getVisitorRecords();
+            const container = document.getElementById('visitorRecords');
+            if (!container) return;
+
+            if (records.length === 0) {
+                container.innerHTML = '<p style="color: #aaa; text-align: center; padding: 10px;">لا توجد زيارات مسجلة بعد.</p>';
+                return;
+            }
+
+            container.innerHTML = `
+                <table class="visitor-table">
+                    <thead>
+                        <tr>
+                            <th>الاسم</th>
+                            <th>نوع الجهاز</th>
+                            <th>أول زيارة</th>
+                            <th>آخر زيارة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${records.map(record => `
+                            <tr>
+                                <td>${record.name || 'زائر مجهول'}</td>
+                                <td>${record.device}</td>
+                                <td>${new Date(record.firstVisit).toLocaleString('ar-EG', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</td>
+                                <td>${new Date(record.lastVisit).toLocaleString('ar-EG', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
         function updateStats() {
             const customDiseases = JSON.parse(localStorage.getItem('customDiseases') || '[]');
             const defaultCount = 20; // عدد الأمراض الأصلية
             const totalCount = defaultCount + customDiseases.length;
+            const visitors = getVisitorRecords();
+            const visitorCount = visitors.length;
 
             document.getElementById('statsTotal').textContent = totalCount;
             document.getElementById('statsCustom').textContent = customDiseases.length;
             document.getElementById('statsDefault').textContent = defaultCount;
+            document.getElementById('statsVisitors').textContent = visitorCount;
+            renderVisitorRecords();
         }
     </script>
 </body>

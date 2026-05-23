@@ -138,7 +138,7 @@ const defaultDiseases = [
         name: 'الاكتئاب',
         category: 'نفسية',
         description: 'حالة مزاجية تتضمن فقدان الاهتمام والطاقة، وتحتاج لدعم طبي ونفسي ثابت.',
-        symptoms: ['حزن مستمر', 'فقدان الاهتمام', 'تعب', 'صعوبة في النوم', 'فقدان شهي ة'],
+        symptoms: ['حزن مستمر', 'فقدان الاهتمام', 'تعب', 'صعوبة في النوم', 'فقدان شهية'],
         treatment: 'جلسات علاج نفسي، أدوية مضادة للاكتئاب، ودعم اجتماعي.',
         medications: ['سيرترالين', 'فلوكسيتين', 'مضادات اكتئاب ثلاثية الحلقات'],
         remedies: 'ممارسة الرياضة الخفيفة، تنظيم النوم، والتغذية المتوازنة.',
@@ -382,5 +382,144 @@ function shareOnWhatsApp() {
     window.open(`https://wa.me/?text=${message}%20${encodeURIComponent(link)}`, '_blank');
 }
 
+function detectDeviceType() {
+    const ua = navigator.userAgent;
+    const mobilePattern = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i;
+    return mobilePattern.test(ua) ? 'هاتف محمول' : 'حاسوب / جهاز لوحي';
+}
+
+function getVisitorId() {
+    let visitorId = localStorage.getItem('visitorDeviceId');
+    if (!visitorId) {
+        visitorId = 'visitor_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
+        localStorage.setItem('visitorDeviceId', visitorId);
+    }
+    return visitorId;
+}
+
+function recordVisitorSession() {
+    try {
+        const visitorId = getVisitorId();
+        const records = JSON.parse(localStorage.getItem('visitorRecords') || '[]');
+        const existing = records.find(record => record.id === visitorId);
+        const now = new Date().toISOString();
+        const deviceType = detectDeviceType();
+
+        if (!existing) {
+            records.push({
+                id: visitorId,
+                name: 'زائر مجهول',
+                device: deviceType,
+                firstVisit: now,
+                lastVisit: now
+            });
+        } else {
+            existing.lastVisit = now;
+        }
+
+        localStorage.setItem('visitorRecords', JSON.stringify(records));
+        incrementVisitorCount();
+    } catch (e) {
+        console.log('تعذر تسجيل زيارة الزائر:', e);
+    }
+}
+
+function registerVisitor() {
+    try {
+        const nameInput = document.getElementById('visitorName');
+        if (!nameInput) return;
+
+        const storedName = nameInput.value.trim();
+        if (!storedName) {
+            alert('⚠️ الرجاء كتابة اسمك قبل التسجيل.');
+            return;
+        }
+
+        const visitorId = getVisitorId();
+        const records = JSON.parse(localStorage.getItem('visitorRecords') || '[]');
+        const existing = records.find(record => record.id === visitorId);
+        const now = new Date().toISOString();
+
+        if (existing) {
+            existing.name = storedName;
+            existing.lastVisit = now;
+        } else {
+            records.push({
+                id: visitorId,
+                name: storedName,
+                device: detectDeviceType(),
+                firstVisit: now,
+                lastVisit: now
+            });
+        }
+
+        localStorage.setItem('visitorRecords', JSON.stringify(records));
+
+        const button = document.getElementById('visitorRegisterBtn');
+        if (button) {
+            button.textContent = 'تمّ التسجيل';
+            button.disabled = true;
+            button.style.opacity = '0.75';
+        }
+
+        updateVisitorDisplay();
+    } catch (e) {
+        console.log('تعذر تحديث تفاصيل الزائر:', e);
+    }
+}
+
+function incrementVisitorCount() {
+    try {
+        const visitorKey = 'siteVisitedByDevice';
+        if (!localStorage.getItem(visitorKey)) {
+            localStorage.setItem(visitorKey, 'true');
+            const currentCount = parseInt(localStorage.getItem('siteVisitors') || '0', 10);
+            localStorage.setItem('siteVisitors', currentCount + 1);
+        }
+    } catch (e) {
+        console.log('تعذر تحديث عدد الزوار:', e);
+    }
+}
+
+function getVisitorCount() {
+    const records = JSON.parse(localStorage.getItem('visitorRecords') || '[]');
+    return records.length;
+}
+
+function updateVisitorDisplay() {
+    const count = getVisitorCount();
+    const visitorElement = document.getElementById('visitorCount');
+    if (visitorElement) {
+        visitorElement.textContent = count.toLocaleString('ar-EG');
+    }
+    const lastUpdated = document.getElementById('lastUpdated');
+    if (lastUpdated) {
+        lastUpdated.textContent = new Date().toLocaleDateString('ar-EG', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+    }
+}
+
+function showScrollButton() {
+    const button = document.getElementById('scrollTopBtn');
+    if (!button) return;
+    if (window.scrollY > 320) {
+        button.classList.add('show');
+    } else {
+        button.classList.remove('show');
+    }
+}
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+window.addEventListener('scroll', showScrollButton);
+window.addEventListener('load', showScrollButton);
+
 loadCustomDiseases();
+recordVisitorSession();
 renderDiseaseCards(diseases);
+updateVisitorDisplay();

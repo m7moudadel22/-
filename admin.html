@@ -156,6 +156,9 @@
                     <h3>سجل الزوار</h3>
                     <p style="color: #888; margin-bottom: 10px;">الزوار محفوظون في السجل ولن يتم حذفهم من صفحة الإدارة.</p>
                     <div id="visitorRecords">لا توجد زيارات مسجلة بعد.</div>
+                    <div style="margin-top:12px; text-align:center;">
+                        <button class="btn btn-danger" onclick="clearAllVisitorData()">🗑️ مسح سجل الزوار نهائياً</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -368,9 +371,32 @@
             return diseases;
         }
 
+        // (Removed helper that wrote assistant name)
+
+        // Remove only assistant name records, keep other visitor records intact
+        // (دالة إزالة اسم المساعد أُزيلت)
+
+        // Permanently clear visitor-related storage keys
+        function clearAllVisitorData() {
+            if (!confirm('⚠️ هذا سيحذف كامل سجل الزوار وإحصائيات الزوار من المتصفح نهائياً. متابعة؟')) return;
+            try {
+                localStorage.removeItem('visitorRecords');
+                localStorage.removeItem('siteVisitors');
+                localStorage.removeItem('visitorDeviceId');
+                localStorage.removeItem('siteVisitedByDevice');
+                // also clear any dashboard cached counts
+                localStorage.removeItem('dashboardVisitorCount');
+                renderVisitorRecords();
+                updateStats();
+                alert('✅ تم مسح سجلات الزوار والإحصائيات محلياً');
+            } catch (e) {
+                alert('⚠️ حدث خطأ أثناء المسح. افتح وحدة التحكم للتحقق.');
+            }
+        }
+
         function updateStats() {
             const customDiseases = JSON.parse(localStorage.getItem('customDiseases') || '[]');
-            const defaultCount = 20; // عدد الأمراض الأصلية
+            const defaultCount = 50; // عدد الأمراض الأصلية
             const totalCount = defaultCount + customDiseases.length;
             const visitors = getVisitorRecords();
             const storedVisitorCount = parseInt(localStorage.getItem('siteVisitors') || '0', 10);

@@ -25,6 +25,8 @@
         </div>
     </header>
 
+    
+
     <section id="home" class="hero">
         <div class="container hero-content">
             <div class="hero-text">
@@ -37,12 +39,18 @@
             <div class="hero-card">
                 <h3>🔍 بحث شامل</h3>
                 <input id="searchInput" type="search" placeholder="ابحث عن مرض أو وصفة أو دواء..." oninput="filterDiseases()">
-                    <div class="visitor-box">
-                        <input id="visitorName" type="text" placeholder="اكتب اسمك لتسجيل زيارتك" required>
-                        <button id="visitorRegisterBtn" class="btn btn-primary" onclick="registerVisitor()">سجّل زيارتي</button>
+                <div class="mobile-controls">
+                    <button id="toggleExtraBtn" class="btn">عرض المزيد</button>
+                    <button class="btn" onclick="scrollToSection('diseases')">عرض الأمراض</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <span>الأمراض الكلية</span>
+                        <strong id="homeDiseaseCount">0</strong>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -60,9 +68,15 @@
                 <button class="filter-btn" onclick="setCategoryFilter('بكتيرية', this)">بكتيرية</button>
                 <button class="filter-btn" onclick="setCategoryFilter('مزمنة', this)">مزمنة</button>
                 <button class="filter-btn" onclick="setCategoryFilter('هضمي', this)">هضمي</button>
+                <button class="filter-btn" onclick="setCategoryFilter('تنفسية', this)">تنفسية</button>
                 <button class="filter-btn" onclick="setCategoryFilter('جلدية', this)">جلدية</button>
                 <button class="filter-btn" onclick="setCategoryFilter('نفسية', this)">نفسية</button>
                 <button class="filter-btn" onclick="setCategoryFilter('تغذية', this)">تغذية</button>
+                <button class="filter-btn" onclick="setCategoryFilter('كلوية', this)">كلوية</button>
+                <button class="filter-btn" onclick="setCategoryFilter('عينية', this)">عينية</button>
+                <button class="filter-btn" onclick="setCategoryFilter('غدد', this)">غدد</button>
+                <button class="filter-btn" onclick="setCategoryFilter('أسنان', this)">أسنان</button>
+                <button class="filter-btn" onclick="setCategoryFilter('عصبية', this)">عصبية</button>
             </div>
             <div id="diseaseList" class="disease-grid"></div>
         </section>

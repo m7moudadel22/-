@@ -220,10 +220,410 @@ const defaultDiseases = [
         medications: ['مينوكسيديل', 'فيتامينات للشعر', 'مكملات البيوتين'],
         remedies: 'التغذية السليمة، تجنب التوتر، وتدليك فروة الرأس بزيوت طبيعية.',
         foodRecipes: ['سموثي السبانخ مع الموز وزبدة اللوز', 'سلطة السلمون مع بذور الكينوا', 'عصير الجزر مع الزنجبيل']
+    },
+    {
+        id: 'sickleCell',
+        name: 'فقر الدم المنجلي',
+        category: 'مزمنة',
+        description: 'حالة وراثية تؤثر على شكل خلايا الدم الحمراء وتسبب ألماً متكرراً وتعباً شديداً.',
+        symptoms: ['ألم شديد في العظام', 'تعب مستمر', 'اصفرار الجلد', 'تورم في اليدين والقدمين', 'التهابات متكررة'],
+        treatment: 'إدارة الألم، ترطيب الجسم، ومتابعة طبية دورية لتجنب المضاعفات.',
+        medications: ['أقراص حمض الفوليك', 'مضادات الالتهاب', 'محاليل وريدية عند الأزمات'],
+        remedies: 'شرب الكثير من السوائل، تجنب التعب الشديد، وتناول أطعمة غنية بالحديد والفيتامينات.',
+        foodRecipes: ['مرق دجاج غني بالخضار', 'عصير البرتقال مع التوت', 'سلطة السبانخ مع الفاصوليا البيضاء']
+    },
+    {
+        id: 'earInfection',
+        name: 'التهاب الأذن الوسطى',
+        category: 'بكتيرية',
+        description: 'عدوى تصيب الأذن الوسطى وتسبب ألماً وضغطاً داخل الأذن مع احتمال فقدان مؤقت للسمع.',
+        symptoms: ['ألم أذن', 'حمى خفيفة', 'سيلان من الأذن', 'ضغط داخل الأذن', 'ضعف السمع'],
+        treatment: 'مضادات حيوية عند الحاجة ومسكنات لتخفيف الألم.',
+        medications: ['أموكسيسيلين', 'باراسيتامول', 'مضاد احتقان أنفي'],
+        remedies: 'وضع كمادات دافئة على الأذن، والراحة، وشرب السوائل الدافئة.',
+        foodRecipes: ['شاي الزنجبيل مع العسل', 'حساء الخضار الدافئ', 'عصير التفاح الطبيعي']
+    },
+    {
+        id: 'sinusitis',
+        name: 'التهاب الجيوب الأنفية',
+        category: 'تنفسية',
+        description: 'التهاب في تجاويف الأنف حول الجيوب الأنفية يسبب احتقاناً وألماً في الوجه والصداع.',
+        symptoms: ['احتقان أنفي', 'صداع في الجبهة', 'ألم في الخدين', 'سعال', 'رائحة فم كريهة'],
+        treatment: 'مضادات احتقان ومسكنات مع بخار دافئ لتنظيف الممرات الأنفية.',
+        medications: ['مضاد احتقان', 'باراسيتامول', 'مضاد حيوي عند المضاعفات'],
+        remedies: 'استنشاق بخار الماء، شرب الماء بكثرة، ووضع كمادات دافئة على الوجه.',
+        foodRecipes: ['شوربة الدجاج بالخضار', 'نوش باي الزنجبيل والليمون', 'عصير الرمان الطبيعي']
+    },
+    {
+        id: 'cystitis',
+        name: 'التهاب المثانة',
+        category: 'بكتيرية',
+        description: 'عدوى في المثانة تسبب حرقة أثناء التبول وحاجة متكررة للتبول.',
+        symptoms: ['ألم أثناء التبول', 'رغبة ملحة في التبول', 'بول عكر', 'دم في البول', 'ألم في أسفل البطن'],
+        treatment: 'مضادات حيوية مع شرب السوائل بكثرة لتخفيف الأعراض.',
+        medications: ['سيبروفلوكساسين', 'بنسلين', 'مسكنات ألم خفيفة'],
+        remedies: 'شرب الماء بكثرة، تجنب الكافيين، وتناول عصير التوت البري الطبيعي.',
+        foodRecipes: ['ماء الليمون الدافئ', 'سلطة الخيار والنعناع', 'شوربة الخضار الخفيفة']
+    },
+    {
+        id: 'rheumatoidArthritis',
+        name: 'التهاب المفاصل الروماتويدي',
+        category: 'مزمنة',
+        description: 'مرض مناعي مزمن يسبب ألم وتورم في المفاصل، ويحتاج متابعة طويلة الأمد.',
+        symptoms: ['تورم المفاصل', 'ألم صباحي', 'تصلب المفاصل', 'إعياء', 'حُمّى خفيفة'],
+        treatment: 'أدوية مضادة للالتهاب والمناعة، وتأهيل حركي منتظم.',
+        medications: ['ميثوتركسات', 'إيبوبروفين', 'ستيرويدات خفيفة'],
+        remedies: 'الراحة المتوازنة، تمارين استطالة خفيفة، وتناول أطعمة مضادة للالتهاب.',
+        foodRecipes: ['سلطة السلمون مع الخضار الورقية', 'شوربة العدس بالكركم', 'شاي الزنجبيل مع القرفة']
+    },
+    {
+        id: 'hepatitisB',
+        name: 'التهاب الكبد الوبائي',
+        category: 'فيروسية',
+        description: 'عدوى فيروسية تصيب الكبد وتؤدي إلى ضعف الطاقة واصفرار الجلد واحتقان البطن.',
+        symptoms: ['اصفرار الجلد', 'تعب شديد', 'فقدان الشهية', 'ألم في أعلى البطن', 'بول داكن'],
+        treatment: 'راحة ومتابعة طبية، وقد تحتاج أدوية مضادة للفيروسات في الحالات الحادة.',
+        medications: ['أنتيفيرال', 'أسيتامينوفين بحذر', 'فيتامينات داعمة للكبد'],
+        remedies: 'تجنب الكحول، تناول أطعمة خفيفة، وشرب السوائل الدافئة.',
+        foodRecipes: ['شوربة خضار خفيفة', 'عصير التفاح الممدد بالماء', 'سلطة الخيار واللبن']
+    },
+    {
+        id: 'pancreatitis',
+        name: 'التهاب البنكرياس',
+        category: 'هضمي',
+        description: 'التهاب حاد أو مزمن في البنكرياس يسبب ألماً شديداً في أعلى البطن وغثياناً.',
+        symptoms: ['ألم شديد في أعلى البطن', 'غثيان', 'تقيؤ', 'حمى', 'إسهال زيتي'],
+        treatment: 'صيام مؤقت، سوائل وريدية، وأدوية لتخفيف الألم.',
+        medications: ['مسكنات قوية', 'إنزيمات البنكرياس', 'مضادات غثيان'],
+        remedies: 'اتباع حمية منخفضة الدهون، وشرب الماء بكثرة بعد التحسن.',
+        foodRecipes: ['شوربة الخضار الخفيفة', 'عصير جزر خفيف', 'أرز أبيض مسلوق مع خضار مطبوخة']
+    },
+    {
+        id: 'pepticUlcer',
+        name: 'القرحة الهضمية',
+        category: 'هضمي',
+        description: 'قرحة في بطانة المعدة أو الأمعاء تسبب ألمًا حارقًا وغثيانًا بعد الأكل.',
+        symptoms: ['ألم حارق في البطن', 'حرقة في الصدر', 'غثيان', 'فقدان الشهية', 'انتفاخ'],
+        treatment: 'أدوية مضادة للحموضة ومضادات بكتيريا هليكوباكتر بيلوري.',
+        medications: ['مثبطات مضخة البروتون', 'مضادات حموضة', 'أموكسيسيلين'],
+        remedies: 'تناول وجبات صغيرة متكررة، تجنب التوابل، وشرب الأعشاب المهدئة.',
+        foodRecipes: ['شوربة الشعير بالخضار', 'عصير الشمندر المخفف', 'زبادي طبيعي مع عسل']
+    },
+    {
+        id: 'atopicDermatitis',
+        name: 'التهاب الجلد التأتبي',
+        category: 'جلدية',
+        description: 'تهيج جلدي مزمن يسبب حكة وجفافاً وتقشرًا، وغالباً ما يزداد مع الحساسية.',
+        symptoms: ['حكة شديدة', 'جلد جاف', 'احمرار', 'تقشر', 'تشققات'],
+        treatment: 'مرطبات قوية، كريمات ستيرويد موضعية، وتجنب المهيجات.',
+        medications: ['كريمات مرطبة', 'ستيرويدات موضعية', 'مضادات هيستامين'],
+        remedies: 'استخدام صابون لطيف، حمامات زيت معدنية، وتناول أطعمة مضادة للالتهاب.',
+        foodRecipes: ['عصير الكرفس والتفاح', 'سلطة الأفوكادو والخيار', 'شاي البابونج البارد']
+    },
+    {
+        id: 'seborrheicDermatitis',
+        name: 'التهاب الجلد الدهني',
+        category: 'جلدية',
+        description: 'حالة جلدية تسبب قشرة دهنية واحمراراً عادةً في فروة الرأس وخط الشعر.',
+        symptoms: ['قشرة دهنية', 'احمرار', 'حكة', 'تساقط خفيف للشعر', 'تصبغات جلدية'],
+        treatment: 'شامبو طبي، مراهم مضادة للفطريات، وتجنب المنتجات القاسية.',
+        medications: ['شامبو كيتوكونازول', 'كريم مضاد فطريات', 'مستحضرات مطهرة خفيفة'],
+        remedies: 'تنظيف فروة الرأس بلطف، وتجنب التوتر والإجهاد.',
+        foodRecipes: ['عصير الخيار والنعناع', 'سلطة الجرجير مع الطماطم', 'شوربة كوسا بالنعناع']
+    },
+    {
+        id: 'seasonalAllergy',
+        name: 'الحساسية الموسمية',
+        category: 'تنفسية',
+        description: 'تفاعل قوي مع حبوب اللقاح والغبار يسبب عطساً وحكة واحتقاناً في الأنف والعينين.',
+        symptoms: ['عطس متكرر', 'حكة أنف وعين', 'احتقان', 'سيلان أنف', 'احمرار العينين'],
+        treatment: 'مضادات الهيستامين، بخاخات أنف، وتجنب المحفزات قدر الإمكان.',
+        medications: ['لوراتيادين', 'سيتريزين', 'بخاخ أنفي كورتيكوستيرويدي'],
+        remedies: 'شطف الأنف بالماء الملحي، وغسل اليدين والوجه بعد الخروج.',
+        foodRecipes: ['عصير الليمون مع العسل', 'حساء الدجاج بالخضار', 'عصير البرتقال مع الزنجبيل']
+    },
+    {
+        id: 'conjunctivitis',
+        name: 'التهاب الملتحمة',
+        category: 'عينية',
+        description: 'التهاب العين الذي يسبب احمراراً وحرقاناً وتدميعاً، وقد يكون فيروسي أو تحسسي.',
+        symptoms: ['احمرار العين', 'حرقان', 'دموع متواصلة', 'حساسية للضوء', 'إفرازات'],
+        treatment: 'قطرات مرطبة أو مضادة للهيستامين، وغالباً ما يشفى بالمراقبة الطبية.',
+        medications: ['قطرات محاربات للهيستامين', 'محاليل ملحية', 'قطرات مضادة للاحمرار'],
+        remedies: 'غسل العين بماء نظيف، تجنب لمس العينين، واستخدام ضمادات باردة.',
+        foodRecipes: ['شاي البابونج مثلج', 'عصير الخيار المخفف', 'سلاطة التفاح والخس']
+    },
+    {
+        id: 'uti',
+        name: 'عدوى المسالك البولية',
+        category: 'بكتيرية',
+        description: 'عدوى في المسالك البولية تسبب حرقة وألماً في الحوض مع رغبة متكررة في التبول.',
+        symptoms: ['حرقة عند التبول', 'تكرار البول', 'ألم أسفل البطن', 'بول عكر', 'رائحة قوية للبول'],
+        treatment: 'مضادات حيوية وشرب كميات كبيرة من الماء.',
+        medications: ['نيروفوروكسازيد', 'سيبروفلوكساسين', 'مضادات ألم خفيفة'],
+        remedies: 'شرب عصير التوت البري الطبيعي، وتجنب المشروبات الغازية والكافيين.',
+        foodRecipes: ['ماء الليمون الدافئ', 'شوربة الخضار الخفيفة', 'سلطة الخيار والنعناع']
+    },
+    {
+        id: 'crohnsDisease',
+        name: 'داء كرون',
+        category: 'هضمي',
+        description: 'التهاب مزمن للأمعاء يسبب آلاماً بطنية وإسهالاً وفقدان وزن ومغصاً.',
+        symptoms: ['ألم بطن', 'إسهال', 'نزيف شرجي', 'تعب', 'فقدان وزن'],
+        treatment: 'أدوية مضادة للالتهاب، وتغيير النظام الغذائي، أحياناً جراحة.',
+        medications: ['كورتيكوستيرويدات', 'مضادات الالتهاب', 'مثبطات جهاز المناعة'],
+        remedies: 'تناول أطعمة سهلة الهضم، وتجنب الأطعمة المزعجة مثل الحار والدسم.',
+        foodRecipes: ['شوربة الجزر المهروس', 'عصير الكمثرى المخفف', 'أرز أبيض مع الخضار المطبوخة']
+    },
+    {
+        id: 'ulcerativeColitis',
+        name: 'التهاب القولون التقرحي',
+        category: 'هضمي',
+        description: 'التهاب مستمر في بطانة القولون يسبب تهيجاً وإسهالاً دمويًا وألمًا في البطن.',
+        symptoms: ['إسهال دموي', 'ألم أسفل البطن', 'تعب', 'فقدان وزن', 'حمى خفيفة'],
+        treatment: 'أدوية مطهرة للأمعاء، ومراقبة طبية دورية، وفي بعض الحالات جراحة.',
+        medications: ['أسيميدين', 'كورتيزون', 'مضادات التشنج'],
+        remedies: 'اتباع حمية منخفضة الألياف أثناء النوبات، وزيادة السوائل.',
+        foodRecipes: ['عصيدة الأرز مع الموز', 'شوربة البطاطس المسلوقة', 'عصير التفاح المصفى']
+    },
+    {
+        id: 'pcos',
+        name: 'متلازمة تكيس المبايض',
+        category: 'غدد',
+        description: 'اختلال هرموني يصيب النساء ويؤثر على الدورة الشهرية والقدرة على الحمل.',
+        symptoms: ['تأخر الدورة', 'زيادة شعر الوجه', 'حب شباب', 'زيادة وزن', 'صعوبة في الحمل'],
+        treatment: 'تنظيم الدورة، حمية صحية، وأدوية تنظيم الهرمونات.',
+        medications: ['ميتفورمين', 'حبوب منع الحمل', 'أدوية لتنظيم الهرمونات'],
+        remedies: 'مراقبة الوزن، تمارين رياضية منتظمة، وتناول الأطعمة منخفضة السكر.',
+        foodRecipes: ['سلطة الحمص والخضار', 'سموثي التوت مع الزبادي', 'شوربة العدس الخفيفة']
+    },
+    {
+        id: 'osteoporosis',
+        name: 'هشاشة العظام',
+        category: 'مزمنة',
+        description: 'انخفاض كثافة العظام يجعلها أكثر عرضة للكسر ويحتاج دعمًا غذائياً وحركياً.',
+        symptoms: ['آلام ظهر', 'كسر سهل للعظام', 'انخفاض الطول', 'ضعف', 'تعب'],
+        treatment: 'تقوية العظام عبر مكملات الكالسيوم وفيتامين د، وتمارين مناسبة.',
+        medications: ['كالسيتونين', 'مكملات كالسيوم', 'فيتامين د'],
+        remedies: 'المشي اليومي، تناول الحليب والمكسرات، وتعرض معتدل للشمس.',
+        foodRecipes: ['حليب لوز مدعم بالكالسيوم', 'سلطة السبانخ مع اللوز', 'زبادي طبيعي مع الفواكه']
+    },
+    {
+        id: 'pms',
+        name: 'متلازمة ما قبل الحيض',
+        category: 'نفسية',
+        description: 'مجموعة من الأعراض الجسدية والنفسية تظهر قبل الدورة الشهرية وتختفي بعد بدايتها.',
+        symptoms: ['تقلب مزاجي', 'انتفاخ', 'تعب', 'صداع', 'حساسية'],
+        treatment: 'راحة، دعم غذائي، وأحياناً أدوية مضادة للتقلصات.',
+        medications: ['إيبوبروفين', 'مكملات مغنيسيوم', 'فيتامين ب6'],
+        remedies: 'تقليل الملح والكافيين، ممارسة الرياضة الخفيفة، وتناول السوائل.',
+        foodRecipes: ['شاي النعناع مع العسل', 'سلطة الحبوب الكاملة', 'عصير البرتقال الطبيعي']
+    },
+    {
+        id: 'thyroiditis',
+        name: 'التهاب الغدة الدرقية',
+        category: 'غدد',
+        description: 'التهاب في الغدة الدرقية يسبب اضطراباً في الهرمونات وحساسية للتعب أو السخونة.',
+        symptoms: ['تعب', 'زيادة أو فقدان وزن', 'ألم في الرقبة', 'خفقان', 'حساسية للبرد أو الحرارة'],
+        treatment: 'علاج هرموني حسب الحاجة ومتابعة وظائف الغدة الدرقية.',
+        medications: ['ليفوثيروكسين', 'ستيرويدات خفيفة', 'مسكنات ألم خفيفة'],
+        remedies: 'نظام غذائي متوازن، تجنب اليوكا والكافيين، وشرب الماء بكثرة.',
+        foodRecipes: ['عصير السبانخ والتفاح', 'شوربة الخضار الخفيفة', 'سلطة الطماطم والجرجير']
+    },
+    {
+        id: 'dentalCaries',
+        name: 'تسوس الأسنان',
+        category: 'أسنان',
+        description: 'تآكل بنية السن بسبب الأحماض الناتجة عن البكتيريا، مما يؤدي إلى ألم وحساسية.',
+        symptoms: ['ألم سنّي', 'حساسية للبارد والساخن', 'بقع بنية أو سوداء', 'رائحة فم كريهة', 'ألم أثناء المضغ'],
+        treatment: 'حشو الأسنان وتنظيفها، ومتابعة صحة الفم بشكل دوري.',
+        medications: ['مسكن ألم', 'مضاد حيوي في بعض الحالات', 'مضمضة ماء ملحي'],
+        remedies: 'تنظيف الأسنان بالفرشاة والخيط، وتقليل السكر في النظام الغذائي.',
+        foodRecipes: ['شاي الزنجبيل بدون سكر', 'سلطة فواكه طازجة', 'لبن زبادي طبيعي']
+    },
+    {
+        id: 'hemorrhoids',
+        name: 'البواسير',
+        category: 'هضمي',
+        description: 'انتفاخ أوردة منطقة الشرج يسبب ألمًا وحكةً ونزفاً بسيطاً أثناء التبرز.',
+        symptoms: ['حكة', 'ألم عند التبرز', 'نزف خفيف', 'تورم حول فتحة الشرج', 'شعور بعدم الراحة'],
+        treatment: 'مرطبات موضعية، أدوية تخفيف الألم، وتحسين حركة الأمعاء.',
+        medications: ['مرهم موضعي', 'مضاد التهابات', 'مسكنات ألم خفيفة'],
+        remedies: 'تناول الألياف، شرب الماء بكثرة، وتجنب الجلوس الطويل.',
+        foodRecipes: ['سلطة التمر والزبادي', 'شوفان مع الفواكه', 'عصير البرتقال الطبيعي']
+    },
+    {
+        id: 'panicDisorder',
+        name: 'نوبات الهلع',
+        category: 'نفسية',
+        description: 'حلقات مفاجئة من الخوف الشديد والعلامات الجسدية مثل خفقان القلب وضيق التنفس.',
+        symptoms: ['خفقان سريع', 'عرق', 'ارتعاش', 'صعوبة في التنفس', 'شعور بالخطر القريب'],
+        treatment: 'دعم نفسي، تقنيات التنفس، وفي بعض الأحيان أدوية مهدئة.',
+        medications: ['بنزوديازيبين خفيف', 'مثبطات امتصاص السيرتونين', 'مضادات قلق'],
+        remedies: 'تمارين التنفس العميق، اليوغا، والابتعاد عن المنبهات.',
+        foodRecipes: ['شاي البابونج مع العسل', 'مكسرات غير مملحة', 'عصير التوت الأزرق']
+    },
+    {
+        id: 'chronicKidneyDisease',
+        name: 'الفشل الكلوي المزمن',
+        category: 'كلوية',
+        description: 'تدهور تدريجي لوظائف الكلى يمنعها من تنقية الدم بشكل كافٍ.',
+        symptoms: ['تعب', 'احتباس سوائل', 'قصر نفس', 'ألم في الخاصرة', 'تورم في الساقين'],
+        treatment: 'حميات خاصة، مراقبة ضغط الدم، وفي الحالات المتقدمة غسيل كلى.',
+        medications: ['مدرات بول', 'أدوية ضغط الدم', 'مكملات حديد وفيتامين د'],
+        remedies: 'تجنب الصوديوم، شرب كمية محددة من الماء، وتناول البروتين المعتدل.',
+        foodRecipes: ['سلطة الخضار الورقية مع زيت الزيتون', 'أرز أبيض مع خضار مطبوخة', 'عصير التفاح المخفف']
+    },
+    {
+        id: 'pertussis',
+        name: 'السعال الديكي',
+        category: 'بكتيرية',
+        description: 'عدوى بكتيرية تسبب سعالاً شديداً متقطّعاً وصعوبة في التنفس.',
+        symptoms: ['سعال متكرر', 'صفير تنفسي', 'إفرازات مخاطية', 'إرهاق', 'تقيؤ بعد السعال'],
+        treatment: 'مضادات حيوية مبكرة ودعم تنفسي عند الضرورة.',
+        medications: ['أزيثرومايسين', 'كليندامايسين', 'أدوية لتخفيف السعال'],
+        remedies: 'شرب السوائل الدافئة، والراحة، والحفاظ على الهواء رطباً.',
+        foodRecipes: ['شوربة الدجاج بالطماطم', 'عصير العنب المخفف', 'عصيدة الشوفان']
+    },
+    {
+        id: 'foodAllergy',
+        name: 'حساسية الطعام',
+        category: 'تغذية',
+        description: 'رد فعل مناعي تجاه مكون غذائي يسبب حكة وتورماً وهضمياً وأحياناً تنفسياً.',
+        symptoms: ['حكة', 'تورم الشفاه', 'طفح جلدي', 'غثيان', 'صعوبات تنفس'],
+        treatment: 'تجنب المسببات الغذائية، وأدوية مضادة للحساسية عند الضرورة.',
+        medications: ['مضادات الهيستامين', 'أدرينالين حقن في الحالات الحادة', 'مضادات التهاب خفيفة'],
+        remedies: 'قراءة ملصقات الطعام بدقة، والحفاظ على نظام غذائي نظيف.',
+        foodRecipes: ['سلطة التفاح والخس', 'عصير الجزر مع الزنجبيل', 'وجبة من الأرز والخضار']
+    },
+    {
+        id: 'hyperthyroidism',
+        name: 'فرط نشاط الغدة الدرقية',
+        category: 'غدد',
+        description: 'زيادة في إنتاج هرمونات الغدة الدرقية تسبب تسارع ضربات القلب وفقدان وزن.',
+        symptoms: ['خفقان', 'تعرق مفرط', 'فقدان وزن', 'ارتعاش', 'قلة نوم'],
+        treatment: 'أدوية تنظيم الغدة الدرقية وفي بعض الحالات علاج باليود المشع.',
+        medications: ['ميثيمازول', 'بروبرانولول', 'ستيرويدات خفيفة'],
+        remedies: 'تجنب الكافيين، تناول أطعمة غنية بالمعادن، والاسترخاء.',
+        foodRecipes: ['سلطة السبانخ مع السمسم', 'شاي البابونج المهدئ', 'حساء الخضار الدافئ']
+    },
+    {
+        id: 'pneumonia',
+        name: 'الالتهاب الرئوي',
+        category: 'تنفسية',
+        description: 'التهاب في الرئتين يؤدي إلى سعال وحمى وضيق تنفس، ويحتاج علاجاً سريعاً.',
+        symptoms: ['سعال مصحوب بلون', 'حمى', 'ضيق تنفس', 'ألم صدر', 'رعشة'],
+        treatment: 'مضادات حيوية أو مضادات فيروسية حسب السبب، وراحة مع سوائل دافئة.',
+        medications: ['أموكسيسيلين', 'سيفالوسبورين', 'أدوية لتخفيف السعال'],
+        remedies: 'البقاء دافئاً، شرب السوائل الدافئة، والاستنشاق بالبخار. ',
+        foodRecipes: ['مرق دجاج مع الثوم', 'شاي الزنجبيل والعسل', 'عصير التفاح المخفف']
+    },
+    {
+        id: 'gallstones',
+        name: 'حصوات المرارة',
+        category: 'هضمي',
+        description: 'تجمع حصوات صلبة في المرارة يسبب ألمًا حادًا في البطن وقد يتطلب علاجاً جراحياً.',
+        symptoms: ['ألم في أعلى البطن', 'غثيان', 'انتفاخ', 'حرقة', 'آلام بعد الأكل الدهني'],
+        treatment: 'تخفيف الأعراض، وفي بعض الحالات إزالة المرارة جراحياً.',
+        medications: ['مسكنات ألم', 'أدوية إذابة الحصوات', 'مضادات تقلص'],
+        remedies: 'اتباع حمية قليلة الدهون، وشرب سوائل خفيفة كثيرة.',
+        foodRecipes: ['شوربة الخضار الخفيفة', 'عصير الخيار والليمون', 'خضار مطهوة على البخار']
+    },
+    {
+        id: 'hypothyroidism',
+        name: 'قصور الغدة الدرقية',
+        category: 'غدد',
+        description: 'انخفاض إنتاج هرمونات الغدة الدرقية يسبب بطء الأيض، تعباً وزيادة في الوزن.',
+        symptoms: ['تعب', 'برودة دائمة', 'زيادة وزن', 'بطء نبضات القلب', 'اكتئاب خفيف'],
+        treatment: 'علاج هرموني يومي ومتابعة مستويات الهرمونات.',
+        medications: ['ليفوثيروكسين', 'مكملات فيتامين د', 'فيتامين ب12'],
+        remedies: 'اتباع نظام غذائي غني بالألياف، والمشي اليومي، وتقليل الصوديوم.',
+        foodRecipes: ['شوفان مع التوت', 'سلطة السبانخ واللوز', 'شوربة الخضار الخفيفة']
+    },
+    {
+        id: 'obsessiveCompulsiveDisorder',
+        name: 'اضطراب الوسواس القهري',
+        category: 'نفسية',
+        description: 'أفكار متكررة وسلوكيات قهرية تؤثر على النشاط اليومي وتتطلب دعماً نفسياً وعلاجاً.',
+        symptoms: ['أفكار مزعجة متكررة', 'أفعال متكررة لتخفيف القلق', 'قلق مرتفع', 'تأخر عند القيام بالأشياء', 'ضيق نفسي'],
+        treatment: 'علاج سلوكي معرفي وأحياناً أدوية مضادة للاكتئاب.',
+        medications: ['سيرترالين', 'فلوفوكسامين', 'مضادات اكتئاب أخرى'],
+        remedies: 'تمارين الاسترخاء، تنظيم الروتين، والعمل مع أخصائي نفسي.',
+        foodRecipes: ['شاي البابونج مع العسل', 'سموثي الشوفان مع الموز', 'سلطة الخضار الملونة']
+    },
+    {
+        id: 'bronchitis',
+        name: 'التهاب الشعب الهوائية',
+        category: 'فيروسية',
+        description: 'التهاب في الشعب الهوائية يسبب سعالاً طويلاً واحتقاناً في الصدر.',
+        symptoms: ['سعال متكرر', 'بلغم', 'ضيق تنفس', 'احتقان الصدر', 'ألم خفيف في الصدر'],
+        treatment: 'راحة، ترطيب جيد، وأحياناً أدوية لتوسيع الشعب الهوائية إذا لزم الأمر.',
+        medications: ['موسعات الشعب الهوائية', 'مضاد سعال مساعد', 'أدوية للتقلص العضلي في الصدر'],
+        remedies: 'شرب السوائل الدافئة، البخار، وتجنب التدخين.',
+        foodRecipes: ['شاي الزنجبيل والليمون', 'مرق الخضار الدافئ', 'شوربة العدس الخفيفة']
+    },
+    {
+        id: 'urinaryTractInfection',
+        name: 'عدوى المسالك البولية',
+        category: 'كلوية',
+        description: 'عدوى بكتيرية تصيب المثانة أو الكلى وتسبب حرقة وألماً عند التبول.',
+        symptoms: ['حرقة عند التبول', 'تردد التبول', 'ألم في أسفل البطن', 'بول عكر', 'شعور عام بالتعب'],
+        treatment: 'شرب السوائل بكثرة، وأخذ مضاد حيوي بمجرد تشخيص الطبيب.',
+        medications: ['سيفالكسين', 'سيبروفلوكساسين', 'مسكنات ألم خفيفة'],
+        remedies: 'شرب ماء دافئ بكثرة، وتجنب الكافيين والمشروبات الغازية.',
+        foodRecipes: ['ماء ليمون دافئ', 'شوربة خضار خفيفة', 'عصير البطيخ الطبيعي']
+    },
+    {
+        id: 'gingivitis',
+        name: 'التهاب اللثة',
+        category: 'أسنان',
+        description: 'تهاب في اللثة يسبب نزيفاً وحساسية وقد يتطور إذا لم يعالج.',
+        symptoms: ['نزيف لثوي', 'احمرار اللثة', 'تورم بسيط', 'رائحة فم غير منتظمة', 'حساسية أثناء الأكل'],
+        treatment: 'تنظيف أسنان دوري، استخدام معجون أسنان مضاد للبكتيريا، وزيارة طبيب الأسنان.',
+        medications: ['معجون أسنان مضاد للبكتيريا', 'مضمضة مطهرة', 'مسكنات ألم خفيفة'],
+        remedies: 'المضمضة بمحلول ماء ملحي دافئ، وتنظيف الأسنان بخفة.',
+        foodRecipes: ['سلطة خضراء مع التفاح', 'مشروب شاي النعناع', 'زبادي طبيعي مع عسل']
+    },
+    {
+        id: 'arthritis',
+        name: 'التهاب المفاصل',
+        category: 'مزمنة',
+        description: 'التهاب يسبب ألم وتيبس في المفاصل قد يؤثر على الحركة اليومية.',
+        symptoms: ['ألم مفاصل', 'تصلب عند الاستيقاظ', 'تورم المفاصل', 'صعوبة الحركة', 'ألم عند الضغط'],
+        treatment: 'أدوية مضادة للالتهاب، تمارين خفيفة، ودعم التغذية الصحية.',
+        medications: ['إيبوبروفين', 'نابروكسين', 'مضادات التهاب غير ستيرويدية'],
+        remedies: 'الراحة المتوازنة، كمادات دافئة، وتمارين تقوية خفيفة.',
+        foodRecipes: ['سمك مشوي بالأعشاب', 'شوربة خضار مع الكركم', 'عصير الكرز الطبيعي']
+    },
+    {
+        id: 'hepatitis',
+        name: 'التهاب الكبد',
+        category: 'فيروسية',
+        description: 'التهاب في الكبد يسبب تعباً شديداً واصفرار الجلد والعينين أحياناً.',
+        symptoms: ['تعب', 'اصفرار الجلد والعينين', 'ألم في أعلى البطن', 'فقدان شهية', 'بول داكن'],
+        treatment: 'متابعة طبية لتحديد النوع، وقد يحتاج لعلاج داعم أو أدوية فيروسية.',
+        medications: ['أدوية فيروسية حسب النوع', 'فيتامينات داعمة', 'أدوية مضادة للغثيان'],
+        remedies: 'الراحة، شرب الماء، وتجنب الكحول والأطعمة الثقيلة.',
+        foodRecipes: ['شوربة خضار خفيفة', 'عصير البرتقال الطازج', 'أرز أبيض مسلوق مع خضار مطهوة']
+    },
+    {
+        id: 'hayFever',
+        name: 'حساسية موسمية',
+        category: 'تنفسية',
+        description: 'حساسية تجاه حبوب اللقاح أو الغبار تسبب عطساً وحكة واحتقاناً أنفياً.',
+        symptoms: ['عطس متكرر', 'سيلان أنف', 'حكة في العينين', 'احتقان الأنف', 'تعب خفيف'],
+        treatment: 'مضادات الهيستامين، تجنب المحفزات، وغالباً علاجات احترازية خلال الموسم.',
+        medications: ['سيتريزين', 'كلاريتين', 'بخاخ أنفي مضاد للهستامين'],
+        remedies: 'غسل الأنف بمحلول ملحي، تجنب التعرض للغبار وحبوب اللقاح.',
+        foodRecipes: ['شاي الزنجبيل والعسل', 'عصير الليمون مع النعناع', 'سلطة الخيار والطماطم']
     }
 ];
 
-let diseases = [...defaultDiseases];
+function sortDiseasesByName(list) {
+    return [...list].sort((a, b) => a.name.localeCompare(b.name, 'ar'));
+}
+
+let diseases = sortDiseasesByName(defaultDiseases);
 
 const diseaseList = document.getElementById('diseaseList');
 const detailSection = document.getElementById('detail');
@@ -242,11 +642,15 @@ function renderDiseaseCards(list) {
         return;
     }
 
-    list.forEach(disease => {
+    const sortedDiseases = sortDiseasesByName(list);
+    sortedDiseases.forEach(disease => {
         const card = document.createElement('article');
         card.className = 'disease-card';
         card.innerHTML = `
-            <h3>${disease.name}</h3>
+            <div class="disease-card-top">
+                <span class="disease-tag">${disease.category}</span>
+                <h3>${disease.name}</h3>
+            </div>
             <p>${disease.description}</p>
             <button class="btn" onclick="showDiseaseDetail('${disease.id}')">عرض التفاصيل</button>
         `;
@@ -350,6 +754,7 @@ function addNewItem() {
 function saveDiseasesToStorage(customDiseases) {
     try {
         localStorage.setItem('customDiseases', JSON.stringify(customDiseases));
+        syncDashboardCounts();
     } catch (e) {
         console.log('تنبيه: تعذر حفظ البيانات بشكل دائم');
     }
@@ -361,11 +766,66 @@ function loadCustomDiseases() {
         if (custom) {
             const customItems = JSON.parse(custom);
             diseases = [...customItems, ...defaultDiseases];
+        } else {
+            diseases = [...defaultDiseases];
         }
     } catch (e) {
         console.log('تنبيه: تعذر تحميل البيانات المحفوظة');
+        diseases = [...defaultDiseases];
+    }
+    syncDashboardCounts();
+    updateHomepageStats();
+}
+
+function syncDashboardCounts() {
+    try {
+        const customDiseases = JSON.parse(localStorage.getItem('customDiseases') || '[]');
+        const defaultCount = defaultDiseases.length;
+        const totalCount = defaultCount + customDiseases.length;
+        localStorage.setItem('dashboardDefaultDiseaseCount', defaultCount.toString());
+        localStorage.setItem('dashboardCustomDiseaseCount', customDiseases.length.toString());
+        localStorage.setItem('dashboardDiseaseCount', totalCount.toString());
+        localStorage.setItem('dashboardVisitorCount', getVisitorCount().toString());
+        updateHomepageStats();
+    } catch (e) {
+        console.log('تنبيه: تعذر مزامنة عدد الأمراض والزوار');
     }
 }
+
+function updateHomepageStats() {
+    const diseaseCount = diseases.length;
+    const diseaseElement = document.getElementById('homeDiseaseCount');
+    if (diseaseElement) diseaseElement.textContent = diseaseCount.toLocaleString('ar-EG');
+}
+
+// Ensure visitor records do not store or keep any 'name' fields
+function sanitizeVisitorRecords() {
+    try {
+        const records = JSON.parse(localStorage.getItem('visitorRecords') || '[]');
+        let changed = false;
+        const cleaned = records.map(r => {
+            if (r && r.name) {
+                const copy = Object.assign({}, r);
+                delete copy.name;
+                changed = true;
+                return copy;
+            }
+            return r;
+        });
+        if (changed) {
+            localStorage.setItem('visitorRecords', JSON.stringify(cleaned));
+            // sync visitor counter to records length if needed
+            const stored = parseInt(localStorage.getItem('siteVisitors') || '0', 10);
+            if (stored < cleaned.length) localStorage.setItem('siteVisitors', cleaned.length.toString());
+        }
+    } catch (e) {
+        // ignore
+    }
+}
+
+window.addEventListener('storage', () => {
+    updateHomepageStats();
+});
 
 function copyPageLink() {
     const link = SITE_URL;
@@ -408,7 +868,6 @@ function recordVisitorSession() {
         if (!existing) {
             records.push({
                 id: visitorId,
-                name: 'زائر مجهول',
                 device: deviceType,
                 firstVisit: now,
                 lastVisit: now
@@ -424,73 +883,8 @@ function recordVisitorSession() {
     }
 }
 
-function registerVisitor() {
-    try {
-        const nameInput = document.getElementById('visitorName');
-        if (!nameInput) return;
+// registration and name input removed: visitors recorded anonymously
 
-        const storedName = nameInput.value.trim();
-        if (!storedName) {
-            alert('⚠️ الاسم مطلوب لتسجيل الزيارة.');
-            return;
-        }
-
-        const visitorId = getVisitorId();
-        const records = JSON.parse(localStorage.getItem('visitorRecords') || '[]');
-        const existing = records.find(record => record.id === visitorId);
-        const now = new Date().toISOString();
-
-        if (existing) {
-            existing.name = storedName;
-            existing.lastVisit = now;
-        } else {
-            records.push({
-                id: visitorId,
-                name: storedName,
-                device: detectDeviceType(),
-                firstVisit: now,
-                lastVisit: now
-            });
-        }
-
-        localStorage.setItem('visitorRecords', JSON.stringify(records));
-
-        const button = document.getElementById('visitorRegisterBtn');
-        if (button) {
-            button.textContent = 'تمّ التسجيل';
-            button.disabled = true;
-            button.style.opacity = '0.75';
-        }
-
-        updateVisitorDisplay();
-    } catch (e) {
-        console.log('تعذر تحديث تفاصيل الزائر:', e);
-    }
-}
-
-function setupVisitorForm() {
-    const nameInput = document.getElementById('visitorName');
-    const button = document.getElementById('visitorRegisterBtn');
-    if (!nameInput || !button) return;
-
-    const visitorId = localStorage.getItem('visitorDeviceId');
-    const records = JSON.parse(localStorage.getItem('visitorRecords') || '[]');
-    const existing = records.find(record => record.id === visitorId && record.name && record.name.trim() && record.name !== 'زائر مجهول');
-
-    nameInput.value = existing ? existing.name : '';
-    button.disabled = !nameInput.value.trim();
-    button.style.opacity = nameInput.value.trim() ? '1' : '0.7';
-
-    if (existing) {
-        button.textContent = 'تمّ التسجيل';
-    }
-
-    nameInput.addEventListener('input', () => {
-        const value = nameInput.value.trim();
-        button.disabled = !value;
-        button.style.opacity = value ? '1' : '0.7';
-    });
-}
 
 function incrementVisitorCount() {
     try {
@@ -500,12 +894,17 @@ function incrementVisitorCount() {
             const currentCount = parseInt(localStorage.getItem('siteVisitors') || '0', 10);
             localStorage.setItem('siteVisitors', currentCount + 1);
         }
+        syncDashboardCounts();
     } catch (e) {
         console.log('تعذر تحديث عدد الزوار:', e);
     }
 }
 
 function getVisitorCount() {
+    const storedCount = parseInt(localStorage.getItem('siteVisitors') || '0', 10);
+    if (storedCount > 0) {
+        return storedCount;
+    }
     const records = JSON.parse(localStorage.getItem('visitorRecords') || '[]');
     return records.length;
 }
@@ -540,13 +939,38 @@ function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// Mobile compact helpers
+function initMobileCompact() {
+    try {
+        if (window.innerWidth <= 720) {
+            document.body.classList.add('compact');
+            const diseasesSection = document.getElementById('diseases');
+            if (diseasesSection) diseasesSection.scrollIntoView();
+        }
+    } catch (e) {
+        // ignore
+    }
+}
+
+function toggleExtraSections() {
+    document.body.classList.toggle('show-extra');
+    const btn = document.getElementById('toggleExtraBtn');
+    if (btn) btn.textContent = document.body.classList.contains('show-extra') ? 'إخفاء' : 'عرض المزيد';
+}
+
 window.addEventListener('scroll', showScrollButton);
 window.addEventListener('load', () => {
     showScrollButton();
-    setupVisitorForm();
+    const toggleBtn = document.getElementById('toggleExtraBtn');
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleExtraSections);
+    initMobileCompact();
+});
+window.addEventListener('pageshow', () => {
+    recordVisitorSession();
 });
 
 loadCustomDiseases();
+sanitizeVisitorRecords();
 recordVisitorSession();
 renderDiseaseCards(diseases);
 updateVisitorDisplay();
